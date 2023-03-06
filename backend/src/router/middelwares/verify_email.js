@@ -4,7 +4,6 @@ const jwt=require('jsonwebtoken')
 const User=require('../../models/user')
 require('dotenv').config()
 
-
 function main() {
  
     const email_token=jwt.sign({email:ls('email')},process.env.SECRET)
