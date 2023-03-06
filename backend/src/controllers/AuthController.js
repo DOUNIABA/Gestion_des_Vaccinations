@@ -8,7 +8,7 @@ const confirmation =require('../router/middelwares/verify_email')
 const signup =  async (req,res)=>{
     const {body}=req
     localstorage('email',body.email)
-    confirmation.sendEmail()
+    confirmation.main()
     const user= await User.findOne({email:body.email})
     if(user) throw Error('user exist already')
     const salt = await bcrypt.genSalt(10);
@@ -45,18 +45,9 @@ const signin = async (req,res)=>{
        
 }
 
-const verifyEmail = async (req,res) => {
-    const token = req.params.token
-     const vrf= jwt.verify(token,process.env.SECRET)
-     req.email=vrf
-     const confirm= await User.findOneAndUpdate({email:req.email.email},{status:"valid"})
-     if(!confirm) return res.send('not comfirmed')
-     res.send('comfirmed')
-} 
-
 const Logout = async (req, res) => {
     localstorage.clear();
     res.send("Logout");
   };
 
-module.exports={signin,signup,verifyEmail,Logout}
+module.exports={signin,signup,Logout}

@@ -1,27 +1,38 @@
 const nodemailer = require("nodemailer");
-const ls = require("local-storage");
+const ls=require('local-storage')
+const jwt=require('jsonwebtoken')
+const User=require('../../models/user')
+require('dotenv').config()
 
+
+function main() {
+ 
+    const email_token=jwt.sign({email:ls('email')},process.env.SECRET)
+    const url='http://localhost:8000/api/auth/confirmation/'+email_token;
+ 
   let transporter = nodemailer.createTransport({
-    service:"gmail",
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: {
       user: process.env.EMAIL, 
-      pass:  process.env.PASSWORD, 
+      pass:process.env.PASSWORD, 
     },
-  });  
-  
-     exports.sendEmail = (email,token)=>{
-     transporter.sendMail({
-      from: "dounia0bahassane@gmail.com", 
-      to: email,
-      subject: "confirmation email",
-      html: "<h3>HELLO </h3><p> Please click here to confirm your email: <a href=http://localhost:8000/api/auth/verify-email/"+token+"> click here </a> ",
-    },
-    (error)=>{
-        if(error){
-            console.log(error);
-        }
-        else{
-            console.log(" send");
-        }
-    })
-  }
+  });
+  let info = {
+    from: '"dounia" <'+process.env.EMAIL+'>', 
+    to:ls('email'),
+    subject: "email verification ✔",  
+    html: '<b>Hello we just got a request to create an account with this email, please verify in this link <a href="'+url+'">confirm it</a></b>',
+  };
+  transporter.sendMail(info)
+}
+
+async function confirm(req,res){
+  const tkn= await jwt.verify(req.params.email_token,process.env.SECRET)
+  req.email=tkn
+  const user= await User.findOneAndUpdate({email:req.email.email},{confirmation:true})
+   if(user)  res.send('confirmed');
+}
+module.exports= {main,confirm}
+
