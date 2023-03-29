@@ -6,7 +6,6 @@ const GetAllUsers= async(req,res)=>{
      res.json(Users)
 }
 
-
 const Ban = async (req,res)=>{
     res.json({banned})
 }

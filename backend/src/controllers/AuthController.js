@@ -1,7 +1,6 @@
 const User=require('../models/user')
 const bcrypt=require('bcryptjs')
 const jwt=require('jsonwebtoken')
-const dotenv = require("dotenv")
 const localstorage=require('local-storage')
 const confirmation =require('../router/middelwares/verify_email')
 
@@ -42,7 +41,6 @@ const signin = async (req,res)=>{
     token:localstorage('token'),
     data:email
    })
-       
 }
 
 const Logout = async (req, res) => {

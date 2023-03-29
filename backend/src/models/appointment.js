@@ -2,14 +2,11 @@
 const mongoose = require('mongoose')
 
 const Appointmentschema= new mongoose.Schema({
- 
     Date:{
         type:Date,
-      
     },
     heure:{
-        type:String,
-       
+        type:String, 
     },
     status:{
         type:String,

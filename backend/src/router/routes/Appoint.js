@@ -4,6 +4,6 @@ const appoint = require('../../controllers/AppointmentController')
 
 
 router.post('/apponitment/GetAllapp',appoint.GetAllAppointments)
-
+router.post('/apponitment/AddApp',appoint.AddAppointments)
 
 module.exports= router
