@@ -7,6 +7,7 @@ const GetAllUsers= async(req,res)=>{
 }
 
 const Ban = async (req,res)=>{
+    
     res.json({banned})
 }
 

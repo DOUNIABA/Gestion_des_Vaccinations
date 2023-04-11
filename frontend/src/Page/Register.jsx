@@ -1,46 +1,62 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import colors from '../assets/styles/colors'
+import { useState } from 'react'
+import toastr from 'toastr'
+import 'toastr/build/toastr.css'
+import axios from 'axios'
 
-function login() {
+function Register() {
+  const [Data, setData] = useState({});
   
-  // const [message, setMessage] = React.useState('')
+	const onChange = (e) =>{
+		setData((prevState) => ({
+			...prevState,
+			[e.target.name]:e.target.value,
+		}))
+	}
+
+	const handleApi = (e)=>{
+		e.preventDefault();
+		axios.post(`http://localhost:8000/api/auth/register`, Data)
+		.then(res =>{
+			toastr.success(res.data, {positionClass: "toast-bottom-left"})})
+		.catch(error =>{
+			console.log(error)
+		})
+	}
+
 
   return (
     <div className="App auth fill">
-      <form className='justify-content-center'>
+      <form className='justify-content-center' onSubmit={handleApi}>
       <h1>Register</h1>
       <div className="form-floating text-muted col-10"> 
       <label htmlFor='floatingEmail'>Username</label>
           <input className="form-control" 
           type='text' 
-        //   onChange={onChange} 
-        //   id='floatingEmail' 
-        //   name='name' 
+          name='name'
+          onChange={onChange} 
           placeholder='Username' 
           style={{ background: colors.white }} />
-         
         </div>
 
         <div className="form-floating text-muted col-10"> 
         <label htmlFor='floatingEmail'>Email</label>
           <input className="form-control" 
           type='email' 
-        //   onChange={onChange} 
-        //   id='floatingEmail' 
-        //   name='email' 
+          name='email'   
+          onChange={onChange} 
           placeholder='Email' 
           style={{ background: colors.white }} />
-         
         </div>
 
      <div className="form-floating text-muted col-10">
         <label htmlFor='floatingEmail'>Password</label>
           <input className="form-control" 
           type='password' 
-        //   onChange={onChange} 
-        //   id='floatingEmail' 
-          name='password' 
+          onChange={onChange} 
+          name="password"
           placeholder='Password' 
           style={{ background: colors.white }} />
         </div>
@@ -62,4 +78,4 @@ function login() {
   )
 }
 
-export default login
+export default Register

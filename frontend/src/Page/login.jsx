@@ -1,14 +1,37 @@
 import React from 'react'
 import colors from '../assets/styles/colors'
 import { Link } from 'react-router-dom'
-
-function login() {
+import axios from 'axios'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+function Login() {
   
-  // const [message, setMessage] = React.useState('')
+  const navigate=useNavigate()
+  const [error,seterror]=useState(false)
+  const [msg,setmsg]=useState(false)
+  const [Data, setData] = useState({});
 
+  const handleSubmit = async (e)=>{	
+   e.preventDefault()
+     console.log(Data)
+     try{
+  const user = await axios.post(`http://localhost:8000/api/auth/login`, Data)
+    if(user.data){
+          localStorage.setItem("token",user.data.token)
+          localStorage.setItem("name",user.data.name)
+          navigate('/home')
+          }
+  }catch(error){
+    seterror(error.message) 
+  }
+}
+
+const onChange = (e) => {
+  setData({...Data, [e.target.name]: e.target.value });
+};
   return (
     <div className="App auth fill">
-      <form className='justify-content-center'>
+      <form className='justify-content-center' onSubmit={handleSubmit}>
       <h1>Login</h1>
       <div className="mb-3">
         <label>Email address</label>
@@ -17,7 +40,7 @@ function login() {
           name="email"
           className="form-control"
           placeholder="Enter email"
-          // onChange={onChange}
+          onChange={onChange}
         />
       </div>
 
@@ -28,7 +51,7 @@ function login() {
           name="password"
           className="form-control"
           placeholder="Enter password"
-          // onChange={onChange}
+          onChange={onChange}
         />
       </div>
 
@@ -52,4 +75,4 @@ function login() {
   )
 }
 
-export default login
+export default Login
