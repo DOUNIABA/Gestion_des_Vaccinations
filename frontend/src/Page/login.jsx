@@ -1,30 +1,46 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { useState } from 'react'
+import { useState ,useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 
 function Login() {
   
-  const navigate=useNavigate()
+    const navigate=useNavigate()
     const [error,seterror]=useState([])
     const [msg,setmsg]=useState(false)
-    const [Data, setData] = useState({});
-  
-    const handleSubmit = async (e)=>{	
-	   e.preventDefault()
-       console.log(Data)
-        try{
-		const user = await axios.post(`http://localhost:8080/api/auth/login`, Data)
-			if(user.data){
-            localStorage.setItem("token",user.data.token)
-            localStorage.setItem("name",user.data.name)
-            navigate('/home')
-            }
-    }catch(error){
-			seterror(error.message) 
-		}
-	}
+    const [Data, setData] = useState({email: '', password: '',})
+    const [sucess, setSucess] = useState("");
+    const [role, setRole] = useState("");
+    const {email, password}=Data
+
+    const handleSubmit = (e)=>{	
+      e.preventDefault();
+      // console.log(Data);
+      axios.post(`http://localhost:8080/api/auth/login`, Data)
+      .then(res=>{
+        console.log(res.data)
+        localStorage.setItem("token",res.token)
+        setData("");
+        setSucess(true);
+        setRole(res.data.role)
+      })
+      .catch(error =>{
+        console.log(error) 
+      })
+    }
+
+  useEffect(() => {
+		if(sucess){
+	   if(role === "patient"){
+		   navigate("/home") 
+		  } 
+		  if (role === "manager"){
+			navigate("/Dashboard") 
+		   }
+    }
+	   else (console.log('err') )
+	},[Data]);
 
   const onChange = (e) => {
     setData({...Data, [e.target.name]: e.target.value });
@@ -36,8 +52,10 @@ function Login() {
       <div className="mb-3">
         <label>Email address</label>
         <input
+        id='email'
           type="email"
           name="email"
+          value={email}
           className="form-control"
           placeholder="Enter email"
           onChange={onChange}
@@ -47,21 +65,19 @@ function Login() {
       <div className="mb-3">
         <label>Password</label>
         <input
+        id='password'
           type="password"
           name="password"
+          value={password}
           className="form-control"
           placeholder="Enter password"
           onChange={onChange}
         />
       </div>
 
-      <div className="d-grid">
-      <button
-            type="submit"
-            data-testid="submit"
-            className=""
-            >Save</button>
-      </div>
+      <div className="form-group">
+				<button type='submit' className='btn btn-block'>Submit</button>
+			</div>
 
       <div className="d-flex align-items-center justify-content-between ">
  

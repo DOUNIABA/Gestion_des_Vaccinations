@@ -9,5 +9,4 @@ router.post('/login',auth.signin)
 router.post('/register',auth.signup)
 router.get('/logout',auth.Logout)
 router.get('/confirmation/:email_token',verifemail.confirm)
-// router.get('/api/auth/verify-email/:token',verifemail.confirm)
 module.exports= router
