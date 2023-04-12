@@ -39,7 +39,7 @@ function Login() {
 		   navigate("/home") 
 		  } 
 		  if (role === "manager"){
-			navigate("/Dashboard") 
+			navigate("/AllAppoints") 
 		   }
     }
 	   else (console.log('err') )

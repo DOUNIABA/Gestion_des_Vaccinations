@@ -19,18 +19,19 @@ const getVaccin= async (req,res)=>{
   }
 
 const UpdateVaccin= async (req,res)=>{
-    const id = req.params
+    const id = req.params.id
     const {body}=req
-    const vaccin= await Vaccin.updateOne(id,{...body})
-    if(vaccin) res.send('updated')
-    else res.send('not updated')
+    const vaccin= await Vaccin.updateOne({_id:id},{...body})
+    if(vaccin) res.status(200).send('updated')
+    else res.status(400).send('not updated')
 }
 
 const DeleteVaccin=async (req,res)=>{
     const id =req.params.id
     const vaccin= await Vaccin.deleteOne({id})
     if(vaccin)
-    res.send('deleted')
+    res.status(200).send("deleted")
+    else  res.status(404).send("deleted")
 }
 
 

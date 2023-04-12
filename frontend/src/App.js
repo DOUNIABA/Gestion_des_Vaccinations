@@ -9,6 +9,10 @@ import Logout from "./Page/Logout";
 import ProtectRoute from "./ProtectRoutes/ProtectRoute.js";
 import Navbar from "./Component/Navbar";
 import Appointmentsdispalay from "./Component/Appointment/AppointmentsDisplay"
+import PatientDisplay from "./Component/Patient/PatientDisplay";
+import AllVaccin from "./Component/Vaccin/AllVaccin";
+import AddVaccin from "./Component/Vaccin/AddVaccin";
+import EditVaccin from "./Component/Vaccin/EditVaccin";
 function App() {
   return (
     <BrowserRouter>
@@ -22,6 +26,11 @@ function App() {
       <Route path="/home" element={<Home />}/>
       <Route path="/Dashboard" element={<Dashboard />}/>
       <Route path="/AllAppoints" element={<Appointmentsdispalay />}/>
+      <Route path="/PatientDisplay" element={<PatientDisplay />}/>
+      <Route path="/AllVaccin" element={<AllVaccin />}/>
+      <Route path="/NewVaccin" element={<AddVaccin />}/>
+      <Route path="/EditVaccin/:id" element={<EditVaccin />}/>
+    
       <Route path="*" element={<PageErreur />} />
     </Route>
     </Routes>
