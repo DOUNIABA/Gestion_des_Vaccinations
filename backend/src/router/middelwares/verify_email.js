@@ -7,7 +7,7 @@ require('dotenv').config()
 function main() {
  
     const email_token=jwt.sign({email:ls('email')},process.env.SECRET)
-    const url='http://localhost:8000/api/auth/confirmation/'+email_token;
+    const url='http://localhost:8080/api/auth/confirmation/'+email_token;
  
   let transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
@@ -30,8 +30,9 @@ function main() {
 async function confirm(req,res){
   const tkn= await jwt.verify(req.params.email_token,process.env.SECRET)
   req.email=tkn
-  const user= await User.findOneAndUpdate({email:req.email.email},{confirmation:true})
-   if(user)  res.send('confirmed');
+  const confirmations= await User.findOneAndUpdate({email:req.email.email},{confirmation:true})
+  if(!confirmations) return res.send('not comfirmed')
+  res.redirect('http://localhost:3000/login')
 }
 module.exports= {main,confirm}
 

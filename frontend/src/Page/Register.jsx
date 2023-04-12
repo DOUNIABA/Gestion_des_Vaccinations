@@ -1,12 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import colors from '../assets/styles/colors'
 import { useState } from 'react'
 import toastr from 'toastr'
 import 'toastr/build/toastr.css'
 import axios from 'axios'
-
+import { useNavigate } from 'react-router-dom'
 function Register() {
+  const navigate=useNavigate()
+
   const [Data, setData] = useState({});
   
 	const onChange = (e) =>{
@@ -18,7 +20,7 @@ function Register() {
 
 	const handleApi = (e)=>{
 		e.preventDefault();
-		axios.post(`http://localhost:8000/api/auth/register`, Data)
+		axios.post(`http://localhost:8080/api/auth/register`, Data)
 		.then(res =>{
 			toastr.success(res.data, {positionClass: "toast-bottom-left"})})
 		.catch(error =>{
@@ -26,18 +28,37 @@ function Register() {
 		})
 	}
 
-
   return (
     <div className="App auth fill">
       <form className='justify-content-center' onSubmit={handleApi}>
       <h1>Register</h1>
       <div className="form-floating text-muted col-10"> 
-      <label htmlFor='floatingEmail'>Username</label>
+      <label htmlFor='floatingEmail'>First Name</label>
           <input className="form-control" 
           type='text' 
           name='name'
           onChange={onChange} 
-          placeholder='Username' 
+          placeholder='First Name' 
+          style={{ background: colors.white }} />
+        </div>
+
+        <div className="form-floating text-muted col-10"> 
+      <label htmlFor='floatingEmail'>Last Name</label>
+          <input className="form-control" 
+          type='text' 
+          name='prenom'
+          onChange={onChange} 
+          placeholder='Last Name' 
+          style={{ background: colors.white }} />
+        </div>
+
+        <div className="form-floating text-muted col-10"> 
+      <label htmlFor='floatingEmail'>Phone</label>
+          <input className="form-control" 
+          type='number' 
+          name=' num_tel'
+          onChange={onChange} 
+          placeholder='Last Name' 
           style={{ background: colors.white }} />
         </div>
 
@@ -60,6 +81,8 @@ function Register() {
           placeholder='Password' 
           style={{ background: colors.white }} />
         </div>
+
+        
 
       <div className="d-grid">
       <button

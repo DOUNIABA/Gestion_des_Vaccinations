@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+
 function Login() {
   
   const navigate=useNavigate()
-    const [error,seterror]=useState(false)
+    const [error,seterror]=useState([])
     const [msg,setmsg]=useState(false)
     const [Data, setData] = useState({});
   
@@ -14,7 +15,7 @@ function Login() {
 	   e.preventDefault()
        console.log(Data)
         try{
-		const user = await axios.post(`http://localhost:8000/api/auth/login`, Data)
+		const user = await axios.post(`http://localhost:8080/api/auth/login`, Data)
 			if(user.data){
             localStorage.setItem("token",user.data.token)
             localStorage.setItem("name",user.data.name)

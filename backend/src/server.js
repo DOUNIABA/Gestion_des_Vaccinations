@@ -19,6 +19,6 @@ app.use('/api/vaccin',vaccin)
 app.use('/api/stock',stock)
 app.use('/api/appoint',appoint)
 
-app.listen(8000);
+app.listen(8080);
 
 module.exports= app
