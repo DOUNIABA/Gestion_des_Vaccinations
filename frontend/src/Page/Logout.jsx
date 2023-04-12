@@ -15,8 +15,8 @@ function Logout() {
   return (
     <div>
       {localStorage.getItem('token')?
-      ( <button  onClick={logout} className="  h-25 text-center text-light p-0 m-0 hover">log out</button>):
-      ( <button className="  h-25 text-center text-light p-0 m-0 hover"></button>)}
+      ( <button  onClick={logout} className="btn btn-block  h-25 text-center text-light p-0 m-0 hover">log out</button>):
+      ( <button className="btn  h-25 text-center text-light p-0 m-0 hover"></button>)}
    
    </div>
   )

@@ -7,15 +7,15 @@ const Navbar = () => {
 
   return (
     <div className="auth">
-      <nav className="navbar " >
-        <div className="container-fluid d-flex align-items-center text-white">
+      <nav className="Navbar w-50">
+        <div className="container-fluid d-flex align-items-center text-light">
           Formations Continues
-        
-          <div className="w-25 d-flex justify-content-around align-items-center">
-            <Link to="" className="btn text-white hover">
-            </Link>
-            <Logout />
-          </div>
+                      <Logout />
+
+          {/* <div className="w-25 d-flex justify-content-around align-items-center"> */}
+            {/* <Link to="" className="btn text-white hover">
+            </Link> */}
+          {/* </div> */}
         </div>
       </nav>
       <div className="d-flex justify-content-start">
