@@ -19,11 +19,11 @@ function Login() {
       // console.log(Data);
       axios.post(`http://localhost:8080/api/auth/login`, Data)
       .then(res=>{
-        console.log(res.data)
-        localStorage.setItem("token",res.token)
+        localStorage.setItem("token",res.data)
         setData("");
         setSucess(true);
-        setRole(res.data.role)
+        setRole(res.data.data.role)
+       
       })
       .catch(error =>{
         console.log(error) 
@@ -32,7 +32,9 @@ function Login() {
 
   useEffect(() => {
 		if(sucess){
+      console.log(sucess)
 	   if(role === "patient"){
+      console.log(role)
 		   navigate("/home") 
 		  } 
 		  if (role === "manager"){
@@ -52,7 +54,7 @@ function Login() {
       <div className="mb-3">
         <label>Email address</label>
         <input
-        id='email'
+          id='email'
           type="email"
           name="email"
           value={email}
