@@ -8,6 +8,7 @@ import Dashboard from "./Page/dashboard";
 import Logout from "./Page/Logout";
 import ProtectRoute from "./ProtectRoutes/ProtectRoute.js";
 import Navbar from "./Component/Navbar";
+import Appointmentsdispalay from "./Component/Appointment/AppointmentsDisplay"
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +21,7 @@ function App() {
       <Route path='/logout' element={<Logout/>} />  
       <Route path="/home" element={<Home />}/>
       <Route path="/Dashboard" element={<Dashboard />}/>
+      <Route path="/AllAppoints" element={<Appointmentsdispalay />}/>
       <Route path="*" element={<PageErreur />} />
     </Route>
     </Routes>

@@ -3,7 +3,7 @@ const router = require('express').Router()
 const appoint = require('../../controllers/AppointmentController')
 
 
-router.post('/apponitment/GetAllapp',appoint.GetAllAppointments)
-router.post('/apponitment/AddApp',appoint.AddAppointments)
+router.get('/GetAllapp',appoint.GetAllAppointments)
+router.post('/AddApp',appoint.AddAppointments)
 
 module.exports= router

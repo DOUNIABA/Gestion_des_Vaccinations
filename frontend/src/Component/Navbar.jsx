@@ -1,23 +1,43 @@
+// import {Link } from "react-router-dom";
+// import Logout from "../Page/Logout";
+// // import "../App.css";
+
+// const Navbar = () => {
+// // setValue(localStorage.getItem("name"))
+
+//   return (
+//     <div className="">
+//      <nav class="navbar ">
+//   <div class="container-fluid">
+//     <a class="navbar-brand">Navbar</a>
+//     <form class="d-flex">
+//       <button class=" btn-outline-success" type="submit">Search</button>
+//     </form>
+//   </div>
+// </nav>
+//     </div>
+//   );
+// };
+
+// export default Navbar;
+
 import {Link } from "react-router-dom";
 import Logout from "../Page/Logout";
-import "../App.css";
+// import "../App.css";
+// import SideBar from "./SideBar";
 
 const Navbar = () => {
-// setValue(localStorage.getItem("name"))
 
   return (
-    <div className="auth">
-      <nav className="Navbar w-50">
-        <div className="container-fluid d-flex align-items-center text-light">
-          Formations Continues
-                      <Logout />
-
-          {/* <div className="w-25 d-flex justify-content-around align-items-center"> */}
-            {/* <Link to="" className="btn text-white hover">
-            </Link> */}
-          {/* </div> */}
-        </div>
-      </nav>
+    <div className="">
+     <nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">Navbar</a>
+    <div className="d-flex">
+        <Logout />
+    </div>
+  </div>
+</nav>
       <div className="d-flex justify-content-start">
       </div>
     </div>

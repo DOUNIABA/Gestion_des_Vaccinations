@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useState ,useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
+// import './App.css';
 
 function Login() {
   
@@ -78,11 +79,10 @@ function Login() {
       </div>
 
       <div className="form-group">
-				<button type='submit' className='btn btn-block'>Submit</button>
+				<button type='submit' className='button1 btn-block'>Submit</button>
 			</div>
-
       <div className="d-flex align-items-center justify-content-between ">
- 
+        
           <Link to="/Register"  className="btn text-secondary fw-bold fs-6 text-decoration-none" >Sign-in?</Link>
           <Link to=""  className="btn text-secondary fw-bold fs-6" >Forget ur password ?</Link>
 

@@ -15,7 +15,7 @@ const GetAllAppointments= async(req,res)=>{
             model: Vaccin
         }
     ])
-     res.json(Appointments)
+     res.send(Appointments)
 }
 
 const AddAppointments = async (req,res) => {
@@ -25,5 +25,6 @@ const AddAppointments = async (req,res) => {
       }
       const appointment = await Appointment.create({...body})
       if(!appointment) return res.json({ message: 'les rendez-vous ne sont pas créés.'})
+      res.send('done')
 }
 module.exports= {GetAllAppointments,AddAppointments}
