@@ -2,7 +2,8 @@
 import {Route,Routes,BrowserRouter} from "react-router-dom"
 import Login from "./Page/login";
 import Register from "./Page/Register"
-import Error from "./Page/pageError"
+import Home from "./Page/home"
+import PageErreur from "./Page/pageError"
 
 function App() {
   return (
@@ -11,7 +12,9 @@ function App() {
     <Routes>
       <Route path="/" element={< Login />} />
       <Route path="/Register" element={<Register />}/>
-      <Route path='*' element={<Error/>}/>
+      <Route path="/home" element={<Home />}/>
+
+      <Route path="*" element={<PageErreur />} />
     </Routes>
     
     </BrowserRouter>
