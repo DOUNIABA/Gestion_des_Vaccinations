@@ -30,9 +30,9 @@ const Navbar = () => {
 
   return (
     <div className="">
-     <nav class="navbar navbar-light bg-light">
+     <nav class="navbar navbar-light bg-black">
   <div class="container-fluid">
-    <a class="navbar-brand">Navbar</a>
+    <a class="navbar-brand text-light">MeVaccins</a>
     <div className="d-flex">
         <Logout />
     </div>

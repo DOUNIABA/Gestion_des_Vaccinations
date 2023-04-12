@@ -27,4 +27,16 @@ const AddAppointments = async (req,res) => {
       if(!appointment) return res.json({ message: 'les rendez-vous ne sont pas créés.'})
       res.send('done')
 }
-module.exports= {GetAllAppointments,AddAppointments}
+
+const Updatestatus= async (req,res)=>{
+    const {id}=req.body
+    const appointments = await Appointment.findOne({_id:id})
+    if(appointments.status==="depending"){ 
+    await Appointment.findOneAndUpdate({_id : id},{status:"confirmé"}) 
+      res.json({msg:'status updated'})
+      }
+      else{
+        res.json({msg:'not updated'})
+      }
+   }
+module.exports= {GetAllAppointments,AddAppointments,Updatestatus}

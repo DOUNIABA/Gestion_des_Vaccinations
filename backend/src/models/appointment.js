@@ -10,6 +10,7 @@ const Appointmentschema= new mongoose.Schema({
     },
     status:{
         type:String,
+        default:'depending'
     },
     vaccin:{
             type:mongoose.Schema.Types.ObjectId,

@@ -57,7 +57,7 @@ function EditVaccin() {
       <button
           type="submit"
           data-testid="submit"
-          className=""
+          className="B"
           >Save</button>
       </form>      
   </div>

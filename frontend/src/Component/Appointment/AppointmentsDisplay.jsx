@@ -1,11 +1,8 @@
 import React from 'react'
 import { useEffect,useState } from 'react'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
 import "../../App.css";
 import "bootstrap/dist/css/bootstrap.min.css"
-
-const style={width:"auto"}
 
  const AppointDisplay = ()=> {
     const [Data,setData]=useState([])
@@ -17,7 +14,16 @@ const style={width:"auto"}
     useEffect(()=>{
       data();
   },[])
-   console.log(Data)
+
+  const updateStatus= async (e)=>{
+    const id= e.target.value
+    const status = await axios.post('http://localhost:8080/api/appoint/Updatestatus',{id})
+    if( status.data)
+    console.log(data)
+    window.location.reload(false);
+  }
+
+
   return (
     <div className="bg-gray-300 h-screen flex-col">
       <div>
@@ -32,10 +38,7 @@ const style={width:"auto"}
           <div className=" container my-6">
             <h2 className="text-xl font-bold text-gray-800 mb-3">
             Les rendez-vous Enregistrés <hr className="my-2 p-0" />
-            </h2>
-
-            {/* <Link to="/session/addSession"><button  type='submit' className="button1" style={style}>Ajouter un rendez-vous</button></Link>    */}
-            
+            </h2>            
             <table className="table table-striped table-hover">
               <tr className="text-black">
                 <th>patient</th>
@@ -44,9 +47,7 @@ const style={width:"auto"}
                 <th>Date</th>
                 <th>Heure</th>
                 <th>Status</th>
-
               </tr>
-
               {Data.map((e) => (
               <tbody>
                 <tr>
@@ -57,7 +58,10 @@ const style={width:"auto"}
                   <td>{e.Date}</td>
                   <td>{e.heure}</td>
                   <td>
-                    <button className='button1'>Confirmer</button>
+                  <div class="d-grid gap-3 d-md-flex justify-content-md-end">
+                      <button class="btn btn-success" type="submit" onClick={updateStatus}>{e.status}</button>
+                      <button class="btn btn-danger" type="submit" >Annuler</button>
+                    </div>
                   </td>
                   <td>
                   </td>
@@ -67,8 +71,6 @@ const style={width:"auto"}
 
             </table>
           </div>
-      
-        
         </div>
       </div>
     </div>

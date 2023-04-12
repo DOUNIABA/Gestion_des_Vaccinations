@@ -5,6 +5,7 @@ import { useState } from 'react'
 import toastr from 'toastr'
 import 'toastr/build/toastr.css'
 import axios from 'axios'
+import '../App.css'
 import { useNavigate } from 'react-router-dom'
 function Register() {
   const navigate=useNavigate()
@@ -32,7 +33,7 @@ function Register() {
     <div className="App auth fill">
       <form className='justify-content-center' onSubmit={handleApi}>
       <h1>Register</h1>
-      <div className="form-floating text-muted col-10"> 
+      <div className="mb-3"> 
       <label htmlFor='floatingEmail'>First Name</label>
           <input className="form-control" 
           type='text' 
@@ -42,7 +43,7 @@ function Register() {
           style={{ background: colors.white }} />
         </div>
 
-        <div className="form-floating text-muted col-10"> 
+        <div className="mb-3"> 
       <label htmlFor='floatingEmail'>Last Name</label>
           <input className="form-control" 
           type='text' 
@@ -52,27 +53,30 @@ function Register() {
           style={{ background: colors.white }} />
         </div>
 
-        <div className="form-floating text-muted col-10"> 
+        <div className="mb-3"> 
       <label htmlFor='floatingEmail'>Phone</label>
           <input className="form-control" 
+          
           type='number' 
           name=' num_tel'
           onChange={onChange} 
           placeholder='Last Name' 
-          style={{ background: colors.white }} />
+ />
         </div>
 
-        <div className="form-floating text-muted col-10"> 
-        <label htmlFor='floatingEmail'>Email</label>
-          <input className="form-control" 
-          type='email' 
-          name='email'   
-          onChange={onChange} 
-          placeholder='Email' 
-          style={{ background: colors.white }} />
-        </div>
+        <div className="mb-3">
+        <label>Email address</label>
+        <input
+          id='email'
+          type="email"
+          name="email"
+          className="form-control"
+          placeholder="Enter email"
+          onChange={onChange}
+        />
+      </div>
 
-     <div className="form-floating text-muted col-10">
+     <div className="mb-3">
         <label htmlFor='floatingEmail'>Password</label>
           <input className="form-control" 
           type='password' 
@@ -88,7 +92,7 @@ function Register() {
       <button
             type="submit"
             data-testid="submit"
-            className=""
+            className="button1"
             >Save</button>
       </div>
       

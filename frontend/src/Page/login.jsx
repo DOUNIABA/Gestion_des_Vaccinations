@@ -84,7 +84,6 @@ function Login() {
       <div className="d-flex align-items-center justify-content-between ">
         
           <Link to="/Register"  className="btn text-secondary fw-bold fs-6 text-decoration-none" >Sign-in?</Link>
-          <Link to=""  className="btn text-secondary fw-bold fs-6" >Forget ur password ?</Link>
 
         </div>
     
