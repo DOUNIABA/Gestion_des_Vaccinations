@@ -24,7 +24,6 @@ function App() {
     <Route element={<ProtectRoute/>}>
       <Route path='/logout' element={<Logout/>} />  
       <Route path="/home" element={<Home />}/>
-      <Route path="/Dashboard" element={<Dashboard />}/>
       <Route path="/AllAppoints" element={<Appointmentsdispalay />}/>
       <Route path="/PatientDisplay" element={<PatientDisplay />}/>
       <Route path="/AllVaccin" element={<AllVaccin />}/>
