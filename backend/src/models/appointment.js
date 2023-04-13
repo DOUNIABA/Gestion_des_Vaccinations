@@ -5,9 +5,6 @@ const Appointmentschema= new mongoose.Schema({
     Date:{
         type:Date,
     },
-    heure:{
-        type:String, 
-    },
     status:{
         type:String,
         default:'depending'

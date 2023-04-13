@@ -9,7 +9,7 @@ const Userschema= new mongoose.Schema({
         
     },
     date_naiss:{
-        type:String,
+        type:Date,
         
     },
     email:{

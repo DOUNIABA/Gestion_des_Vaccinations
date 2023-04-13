@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
+import SideBar from "../SideBar";
 function EditVaccin() {
   const navigate = useNavigate();
   const [Data, setData] = useState([]);
@@ -30,9 +30,12 @@ function EditVaccin() {
   };
 
   return (
-    <div>
+    <div className=' w-100 '> 
+    <div className="d-flex  "> 
+        <SideBar />
     <form className="form-container shadow " onSubmit={handleSubmit} >
       <div className="col-md-12">
+        <h5>Modification</h5>
           <span>Vaccin</span>
           <input
           type="text"
@@ -57,9 +60,10 @@ function EditVaccin() {
       <button
           type="submit"
           data-testid="submit"
-          className="B"
+          className="button1"
           >Save</button>
       </form>      
+  </div>
   </div>
   );
 }

@@ -4,6 +4,7 @@ import axios from "axios";
 import "../App.css";import "bootstrap/dist/css/bootstrap.min.css"
 import toastr from 'toastr'
 import 'toastr/build/toastr.css'
+import img from '../assets/image/vaccination.jpg'
 
 function Home() {
   const [vaccin,setVaccin] = useState([])
@@ -32,19 +33,20 @@ const handleSubmit = async (e) => {
   window.location.reload(false);;
   console.log("not add");
 };
+    const style={width:"90%",height:"50vh"}
 
   return (
+
     <div>
         <div className=' me-5 mt-5'>
         <div className='d-flex justify-content-between ms-5 '>
-        
         <div className='w-100 mt-5'>
-        <img src=''></img>
-    </div>
+        <img style={style} src={img}></img>
+        </div>
              <form className="w-50 form shadow " onSubmit={handleSubmit}>
-             <p>Veuillez prendre votre rendez-vous ici!</p>
+             <h4>Veuillez prendre votre rendez-vous ici!</h4>
         <div className="col-md-12">
-            <span>Date</span>
+            <label>Date</label>
             <input
             type="Date"
             name="Date"
@@ -67,6 +69,36 @@ const handleSubmit = async (e) => {
               <option value={e._id}>{e.vaccin}</option>
             ))}
           </select>
+        </div>
+
+        <div className="mb-3"> 
+      <label htmlFor='floatingEmail'>Phone</label>
+          <input className="form-control" 
+          type='number' 
+          name='num_tel'
+          onChange={onChange} 
+          placeholder='Phone' 
+ />
+        </div>
+
+        <div className="mb-3"> 
+      <label htmlFor='floatingEmail'>Date de naissance</label>
+          <input className="form-control" 
+          type='Date' 
+          name='date_naiss'
+          onChange={onChange} 
+          placeholder='Date de naissance' 
+ />
+        </div>
+
+        <div className="mb-3"> 
+      <label htmlFor='floatingEmail'>Adresse</label>
+          <input className="form-control" 
+          type='text' 
+          name='adresse'
+          onChange={onChange} 
+          placeholder='Adresse' 
+ />
         </div>
 
         <button

@@ -3,6 +3,7 @@ import { Navigate, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import "../../App.css";
 import "bootstrap/dist/css/bootstrap.min.css"
+import SideBar from '../SideBar';
 
 const  AddEmploye=()=> {
     const Navigate=useNavigate()
@@ -20,9 +21,12 @@ const  AddEmploye=()=> {
       };
 
   return (
-    <div className='w-100 mt-5'>
-        <div className='d-flex justify-content-center align-item-center mt-5 '>
-             <form className=" form-container shadow  " onSubmit={handleSubmit} >
+    <div className=' w-100 '> 
+  
+  <div className="d-flex  "> 
+      <SideBar />
+            
+    <form className=" form-container shadow  " onSubmit={handleSubmit} >
         <div className="col-md-12">
             <span>Vaccin</span>
             <input
@@ -50,9 +54,10 @@ const  AddEmploye=()=> {
         <button
             type="submit"
             data-testid="submit"
-            className=""
+            className="button1"
             >Save</button>
         </form>  
+
         </div>
          
     </div>

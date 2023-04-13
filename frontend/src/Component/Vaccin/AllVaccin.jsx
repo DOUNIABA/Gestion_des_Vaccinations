@@ -4,6 +4,7 @@ import { Link,NavLink } from 'react-router-dom'
 import axios from 'axios'
 import "../../App.css";
 import "bootstrap/dist/css/bootstrap.min.css"
+import SideBar from '../SideBar';
 
 const style={width:"auto"}
 
@@ -27,9 +28,8 @@ const style={width:"auto"}
 
   return (
     <div className="bg-gray-300 h-screen flex-col">
-      <div>
-      </div>
-      <div className="flex  ">
+     <div className="d-flex "> 
+      <SideBar />
         <div className="lg:block">
         </div>
         <div className="m-3 w-100">

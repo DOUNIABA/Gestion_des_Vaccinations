@@ -8,8 +8,6 @@ import { useNavigate } from 'react-router-dom'
 function Login() {
   
     const navigate=useNavigate()
-    const [error,seterror]=useState([])
-    const [msg,setmsg]=useState(false)
     const [Data, setData] = useState({email: '', password: '',})
     const [sucess, setSucess] = useState("");
     const [role, setRole] = useState("");
@@ -17,7 +15,6 @@ function Login() {
 
     const handleSubmit = (e)=>{	
       e.preventDefault();
-      // console.log(Data);
       axios.post(`http://localhost:8080/api/auth/login`, Data)
       .then(res=>{
         localStorage.setItem("token",res.data)
@@ -33,13 +30,12 @@ function Login() {
 
   useEffect(() => {
 		if(sucess){
-      console.log(sucess)
 	   if(role === "patient"){
       console.log(role)
 		   navigate("/home") 
 		  } 
 		  if (role === "manager"){
-			navigate("/AllAppoints") 
+			navigate("/PatientDisplay") 
 		   }
     }
 	   else (console.log('err') )
@@ -50,7 +46,7 @@ function Login() {
   };
   return (
     <div className="App auth fill">
-      <form className='justify-content-center' onSubmit={handleSubmit}>
+      <div className='form1 justify-content-center' onSubmit={handleSubmit}>
       <h1>Login</h1>
       <div className="mb-3">
         <label>Email address</label>
@@ -83,11 +79,11 @@ function Login() {
 			</div>
       <div className="d-flex align-items-center justify-content-between ">
         
-          <Link to="/Register"  className="btn text-secondary fw-bold fs-6 text-decoration-none" >Sign-in?</Link>
+          <Link to="/Register"  className="btn text-secondary fw-bold fs-6 text-decoration-none" >Sign-up?</Link>
 
         </div>
     
-    </form>
+    </div>
     </div>
   )
 }

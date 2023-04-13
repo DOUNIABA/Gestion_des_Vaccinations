@@ -6,9 +6,8 @@ import toastr from 'toastr'
 import 'toastr/build/toastr.css'
 import axios from 'axios'
 import '../App.css'
-import { useNavigate } from 'react-router-dom'
+
 function Register() {
-  const navigate=useNavigate()
 
   const [Data, setData] = useState({});
   
@@ -31,7 +30,7 @@ function Register() {
 
   return (
     <div className="App auth fill">
-      <form className='justify-content-center' onSubmit={handleApi}>
+      <div className='form1 justify-content-center' onSubmit={handleApi}>
       <h1>Register</h1>
       <div className="mb-3"> 
       <label htmlFor='floatingEmail'>First Name</label>
@@ -51,17 +50,6 @@ function Register() {
           onChange={onChange} 
           placeholder='Last Name' 
           style={{ background: colors.white }} />
-        </div>
-
-        <div className="mb-3"> 
-      <label htmlFor='floatingEmail'>Phone</label>
-          <input className="form-control" 
-          
-          type='number' 
-          name=' num_tel'
-          onChange={onChange} 
-          placeholder='Last Name' 
- />
         </div>
 
         <div className="mb-3">
@@ -100,7 +88,7 @@ function Register() {
         <Link to="/" className="btn text-secondary fw-bold fs-6 text-decoration-none " >You have already an account?</Link>
         </div>
 
-    </form>
+    </div>
     </div>
   )
 }

@@ -3,7 +3,7 @@ import { useEffect,useState } from 'react'
 import axios from 'axios'
 import "../../App.css";
 import "bootstrap/dist/css/bootstrap.min.css"
-
+import SideBar from '../SideBar';
  const AppointDisplay = ()=> {
     const [Data,setData]=useState([])
 
@@ -23,12 +23,11 @@ import "bootstrap/dist/css/bootstrap.min.css"
     window.location.reload(false);
   }
 
-
   return (
     <div className="bg-gray-300 h-screen flex-col">
-      <div>
-      </div>
-      <div className="flex  ">
+  
+      <div className="d-flex "> 
+      <SideBar />
         <div className="lg:block">
         </div>
         <div className="m-3 w-100">
@@ -42,7 +41,6 @@ import "bootstrap/dist/css/bootstrap.min.css"
             <table className="table table-striped table-hover">
               <tr className="text-black">
                 <th>patient</th>
-                <th></th>
                 <th>type vaccin</th>
                 <th>Date</th>
                 <th>Heure</th>
@@ -53,7 +51,6 @@ import "bootstrap/dist/css/bootstrap.min.css"
                 <tr>
                   {console.log(e)}
                   <td>{e.user?.name}</td>
-                  <td>{e.user?.prenom}</td>
                   <td>{e.vaccin?.vaccin}</td>
                   <td>{e.Date}</td>
                   <td>{e.heure}</td>
